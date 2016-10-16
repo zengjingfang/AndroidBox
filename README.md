@@ -41,18 +41,17 @@ Android开发知识、经验、资料等总结，作为个人的开发知识体�
 		+ Window
 		+ ViewGrop
 	+ Animation
-	+ thirdlib
-		+ Rx
-			+ RxJava
-
-		+ Volley
-		+ Frseco
-		+ GreenDao
+	+ UI
++ ThirdLib
+	+ RxJava 
+	+ Volley
+	+ Frseco
+	+ GreenDao
 + Design
 	+ Builder
 	+ Factory
 + DevMode
-  + Mvp
+  + MVP
 + Tools
 	+ AndroidStudio
 	+ Git
