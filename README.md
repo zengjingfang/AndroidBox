@@ -1,9 +1,8 @@
 # AndroidBox
 Java、Android开发知识、经验、资料等总结，作为个人的Android开发知识体系。   
 # About Me
-+ Name:井方哥
-+ WeChat:jf-1994
-+ Email:zengjingfang@foxmail.com
++ Name: 井方哥
++ Email: zengjingfang@foxmail.com
 + 知乎：[井方哥](https://www.zhihu.com/people/zeng-jing-fang)
 
 # Java
@@ -18,6 +17,7 @@ Java、Android开发知识、经验、资料等总结，作为个人的Android�
 + Concurrent
 	+ [Java线程池知识必备](https://github.com/zengjingfang/AndroidBox/blob/master/Java/Concurrent/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9F%A5%E8%AF%86%E5%BF%85%E5%A4%87.md)
 	+ [《Java编程思想》学习笔记（第二十一章）：并发](https://github.com/zengjingfang/AndroidBox/blob/master/Java/Concurrent/%E3%80%8AJava%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E7%AB%A0%EF%BC%89%EF%BC%9A%E5%B9%B6%E5%8F%91.md)
+
 # Android
 + Components
 	+ Intents and Intent Filters
