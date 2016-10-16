@@ -1,5 +1,6 @@
 # AndroidBox
 Java、Android开发知识、经验、资料等总结，作为个人的Android开发知识体系。   
+
 # About Me
 + Name: 井方哥
 + Email: zengjingfang@foxmail.com
@@ -53,18 +54,22 @@ Java、Android开发知识、经验、资料等总结，作为个人的Android�
 + Animation
 + UI
 	+ [UI屏幕适配必备的知识点](https://github.com/zengjingfang/AndroidBox/blob/master/Android/UI/UI%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E5%BF%85%E5%A4%87%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.md)
+
 # ThirdLib
 + RxJava 
 + Volley
 + Frseco
 + GreenDao
+
 # Design
 + Builder
 	+ [秒懂设计模式（一）： Builder模式](https://github.com/zengjingfang/AndroidBox/blob/master/Design/%E7%A7%92%E6%87%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%20Builder%E6%A8%A1%E5%BC%8F.md)
 + Factory
+
 #DevMode
 + MVP
  + [从MVC到MVP,记我的两次项目重构实战经历](https://github.com/zengjingfang/AndroidBox/blob/master/DevMode/%E4%BB%8EMVC%E5%88%B0MVP%2C%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BB%A3%E7%A0%81%E9%87%8D%E6%9E%84.md)
+
 # Tools
 + AndroidStudio
 	+ [AndroidStudio快速入门一：将Eclipse项目导入AndroidStudio]()
