@@ -1,7 +1,7 @@
 #[AndroidStudio进阶]重新认识AndroidStudio和Gradle
 
 ###前言
-主要从AndroidStudio的环境安装升级，Gradle，Eclipse转AS,多渠道配置，Maven私服，Action,Option等几个方面出发，讲一些操作技巧以及我对AndroidStudio使用的一些理解与经验。本文较全面的讲述了我们在开发中必须要了解的，比较多而全，可能不能马上记住，目的在于大家看我之后能有一个认识，在需要使用的时候知道有这么个东西。希望对你的开发工作有所帮助，不足之处，请批评指正。
+主要从AndroidStudio的环境安装升级，Gradle，Eclipse转AS,多渠道配置，Maven私服，Action,Option，快捷键等几个方面出发，讲一些操作技巧以及我对AndroidStudio使用的一些理解与经验。本文较全面的讲述了我们在开发中必须要了解的，比较多而全，可能不能马上记住，目的在于大家看我之后能有一个认识，在需要使用的时候知道有这么个东西。希望对你的开发工作有所帮助，不足之处，请批评指正。
 ###知识大纲
 + Install&Settings&Update
 	+ Gradle
@@ -42,8 +42,6 @@
 	+ inspect code
 	+ clean up
 + 调试
-	+ 单步调试
-	+ 
 + Monitors 
 	+ Memory
 	+ CPU\NetWork\GPU
@@ -279,7 +277,7 @@ AS编译太慢是我们经常吐槽的，我们该做些什么来加快编译的
 ####慎重sub-module：
  减少sub-module或者将sub-module导成aar,并上传到私有的maven仓库就更加方便啦,每增加一个sub-module的构建的时间会增加很多。从根上解决这个问题，我们应该增加sub-module时要慎重，同时要考虑他的独立性,与主module要完全解耦。这样我们不会再开发的时候产品要换个ui图也跑到sub-module里边修改。当我们修改了sub-module的时候，编译器会检测到修改重新编译，然后copy到主工程的buid/intermediates/exploded-aar目录下。
 
-####守护进程deamon:
+####守护进程daemon:
 
 当我们在gradle.peopeties中配置org.gradle.daemon=true的时候，相当于开了个进程，这样我们构建项目的许多工作比如加载虚拟机之类的就在该进程中完成。
 
@@ -361,7 +359,7 @@ Gradle每次构建都执行了默认的许多task，其中部分task是我们不
 			+ /proguard.txt (optional)
 			+ /lint.jar (optional)
 		+ jar
-	+ 工程（moudle）依赖
+	+ 工程（module）依赖
 + Dependency configurations
 	+ compile
 	+ runtime
@@ -651,7 +649,19 @@ buildType称为构建类型，ProductFlavor称为定制产品。怎么理解呢�
 
 
 ###十一、 AndroidStudio 2.2版本特性
-+ [AndroidStudio2.2的新鲜事](http://mp.weixin.qq.com/s?src=3&timestamp=1475021974&ver=1&signature=2B3Ge09IdlxkRsHPWyyYM20C4bxcDexfAf0K4zhJz0EOcqZkbC6nE77fMWOl30mbEpjE787gGDZonD4P6UAbZBQk0bqmUT6mreTzxgCtOt51clYsfy08-AJxYk4O5y5B4s2aZuDu3XRJTYWTGjL7KevAnvDgnbxmcVsP7uNgvIE=)
++ 设计
+	+ 布局编辑器
+	+ 约束布局
++ 开发
+	+ 改进C++支持
+	+ 示例浏览器
++ 构建
+	+ Instant Run 改进
+	+ Java 8 支持
+	+ Open JDK 支持
++ 测试
+	+ 模拟器增加了虚拟传感器
+	+ apk分析器
 + [官方原版介绍+视频](https://android-developers.blogspot.com/2016/09/android-studio-2-2.html)
 # 十二、总结
 + Gradle是一个强大的包装机；
