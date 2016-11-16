@@ -56,7 +56,7 @@ Java、Android开发知识、经验、资料等总结，作为个人的Android�
 + UI
 	+ [UI屏幕适配必备的知识点](https://github.com/zengjingfang/AndroidBox/blob/master/Android/UI/UI%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E5%BF%85%E5%A4%87%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9.md)
 + Performance 
-	+ [Android性能优化总结](https://github.com/zengjingfang/AndroidBox/blob/master/Android/Performance/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%B0%8F%E7%BB%93.md)	
+	+ [Android性能优化学习与实践总结](https://github.com/zengjingfang/AndroidBox/blob/master/Android/Performance/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%AE%9E%E8%B7%B5%E5%B0%8F%E7%BB%93.md)	
 	
 # ThirdLib
 + RxJava 
