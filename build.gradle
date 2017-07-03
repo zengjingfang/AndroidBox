@@ -1,0 +1,22 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+//apply from: "http://172.28.2.93/bfc/Bfc/raw/master/public-config/newbfc-config.gradle"
+apply from: "http://172.28.2.93/bfc/Bfc/raw/develop/common-config/bfc-config.gradle"
+
+buildscript {
+    repositories {
+        jcenter()
+        maven { url "http://172.28.1.147:8081/nexus/content/repositories/thirdparty/"}
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0-alpha1'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {url bfcBuildConfig.MAVEN_URL}
+        maven {url 'http://172.28.1.147:8081/nexus/content/repositories/thirdparty/'}
+        maven { url 'http://172.28.1.147:8081/nexus/content/repositories/thirdparty-snapshot/' }
+    }
+}
