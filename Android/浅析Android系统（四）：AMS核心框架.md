@@ -26,8 +26,8 @@ Android系统底层基于Linux Kernel, 当Kernel启动过程会创建init进程,
 
 + 1、Lancher的Activity调用了startActivity;
 + 2、Lancher的mInstrumentation管家婆调用了execStartActivity(),这样就到了下图的Instrumentation这里。
-+ 3、通过Instrumentation->AMS->ATP,ATP调用了scheduleLancherActivity()方法；
-+ 4、查看目标activity是否为当前进程的Activity，或者目标activity的进程已经起来了;
++ 3、通过Instrumentation->AMS->ATP,ApplicationThreadProxy调用了scheduleLancherActivity()方法；
++ 4、AMS端查看目标activity是否为当前进程的Activity，或者目标activity的进程已经起来了;
 	+ 否：要先fork目标activity的进程；
 	+ 是：APT响应scheduleLancherActivity();
 + 5、APT->mH->ActivityThread,ActivityThread调用handleLancherActivity()方法;
