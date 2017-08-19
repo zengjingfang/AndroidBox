@@ -6,9 +6,19 @@ Java、Android开发知识、经验、资料等总结，作为个人的Android�
 + Email: zengjingfang@foxmail.com
 + 知乎：[井方哥](https://www.zhihu.com/people/zeng-jing-fang)
 
+# 略懂Java编程
+
 # 简述JVM基础
 
-+ [简述JVM基础：概述](/java/简述JVM基础：目录.md)
++ [简述JVM基础：概述](https://github.com/zengjingfang/AndroidBox/blob/master/Java/%E7%AE%80%E8%BF%B0JVM%E5%9F%BA%E7%A1%80%EF%BC%9A%E7%9B%AE%E5%BD%95.md)
++ [简述JVM基础（一）：走进Java](https://github.com/zengjingfang/AndroidBox/blob/master/Java/%E7%AE%80%E8%BF%B0JVM%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E8%B5%B0%E8%BF%9BJava.md)
++ [简述JVM基础（二）：Java内存区域与内存溢出异常](https://github.com/zengjingfang/AndroidBox/blob/master/Java/%E7%AE%80%E8%BF%B0JVM%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AJava%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8.md)
++ [简述JVM基础（三）：垃圾收集器与内存分配策略](https://github.com/zengjingfang/AndroidBox/blob/master/Java/%E7%AE%80%E8%BF%B0JVM%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E4%B8%8E%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5.md)
++ [简述JVM基础（四）：类结构文件](https://github.com/zengjingfang/AndroidBox/blob/master/Java/%E7%AE%80%E8%BF%B0JVM%E5%9F%BA%E7%A1%80%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E7%B1%BB%E7%BB%93%E6%9E%84%E6%96%87%E4%BB%B6.md)
++ [简述JVM基础（五）：虚拟机类加载机制](https://github.com/zengjingfang/AndroidBox/blob/master/Java/%E7%AE%80%E8%BF%B0JVM%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6.md)
++ [简述JVM基础（六）：虚拟机字节码执行引擎](https://github.com/zengjingfang/AndroidBox/blob/master/Java/%E7%AE%80%E8%BF%B0JVM%E5%9F%BA%E7%A1%80%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AD%97%E8%8A%82%E7%A0%81%E6%89%A7%E8%A1%8C%E5%BC%95%E6%93%8E.md)
++ [简述JVM基础（七）：Java内存模型与线程](https://github.com/zengjingfang/AndroidBox/blob/master/Java/%E7%AE%80%E8%BF%B0JVM%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9AJava%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B.md)
++ [简述JVM基础（八）：线程安全和锁优化](https://github.com/zengjingfang/AndroidBox/blob/master/Java/%E7%AE%80%E8%BF%B0JVM%E5%9F%BA%E7%A1%80%EF%BC%88%E5%85%AB%EF%BC%89%EF%BC%9A%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E5%92%8C%E9%94%81%E4%BC%98%E5%8C%96.md)
 
 # Android
 + Components
