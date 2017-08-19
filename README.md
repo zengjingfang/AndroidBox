@@ -6,7 +6,27 @@ Java、Android开发知识、经验、资料等总结，作为个人的Android�
 + Email: zengjingfang@foxmail.com
 + 知乎：[井方哥](https://www.zhihu.com/people/zeng-jing-fang)
 
+# 浅析Android系统
++ [浅析Android系统（一）：操作系统基础](https://github.com/zengjingfang/AndroidBox/blob/master/Android/%E6%B5%85%E6%9E%90Android%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80.md)
++ [浅析Android系统（二）：Handle机制原理](https://github.com/zengjingfang/AndroidBox/blob/master/Android/%E6%B5%85%E6%9E%90Android%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AHandle%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86.md)
++ [浅析Android系统（三）：Binder原理](https://github.com/zengjingfang/AndroidBox/blob/master/Android/%E6%B5%85%E6%9E%90Android%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ABinder%E5%8E%9F%E7%90%86.md)
++ [浅析Android系统（四）：AMS核心框架](https://github.com/zengjingfang/AndroidBox/blob/master/Android/%E6%B5%85%E6%9E%90Android%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9AAMS%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6.md)
++ 浅析Android系统（五）：四大组件之Activity
++ 浅析Android系统（六）：四大组件之Service
++ 浅析Android系统（七）：四大组件之BroadCast
++ [浅析Android系统（八）：四大组件之ContentProvider](https://github.com/zengjingfang/AndroidBox/blob/master/Android/%E6%B5%85%E6%9E%90Android%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6%E4%B9%8BContentProvider.md)
++ 浅析Android系统（九）：WMS核心框架
++ [浅析Android系统（十）：View工作原理]()
+
 # 略懂Java编程
++ [略懂Java编程（一）：Java世界里的“对象”](https://github.com/zengjingfang/AndroidBox/blob/master/Java/%E7%95%A5%E6%87%82Java%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AJava%E4%B8%96%E7%95%8C%E9%87%8C%E7%9A%84%E5%AF%B9%E8%B1%A1.md)
++ [略懂Java编程（二）：简述面向对象的六大原则](https://github.com/zengjingfang/AndroidBox/blob/master/Java/%E7%95%A5%E6%87%82Java%E7%BC%96%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E7%AE%80%E8%BF%B0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99.md)
++ [略懂Java编程（三）：什么是多态](https://github.com/zengjingfang/AndroidBox/blob/master/Java/%E7%95%A5%E6%87%82Java%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E4%BB%80%E4%B9%88%E6%98%AF%E5%A4%9A%E6%80%81.md)
++ [略懂Java编程（四）：什么是接口](https://github.com/zengjingfang/AndroidBox/blob/master/Java/%E7%95%A5%E6%87%82Java%E7%BC%96%E7%A8%8B%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E4%BB%80%E4%B9%88%E6%98%AF%E6%8E%A5%E5%8F%A3.md)
++ [略懂Java编程（五）：什么是内部类](https://github.com/zengjingfang/AndroidBox/blob/master/Java/%E7%95%A5%E6%87%82Java%E7%BC%96%E7%A8%8B%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%85%E9%83%A8%E7%B1%BB.md)
++ [略懂Java编程（六）：并发、线程池知识必备](https://github.com/zengjingfang/AndroidBox/blob/master/Java/%E7%95%A5%E6%87%82Java%E7%BC%96%E7%A8%8B%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E5%B9%B6%E5%8F%91%E3%80%81%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9F%A5%E8%AF%86%E5%BF%85%E5%A4%87.md)
++ 略懂Java编程（七）：容器深入研究
++ 略懂Java编程（八）：Java I/O系统
 
 # 简述JVM基础
 
