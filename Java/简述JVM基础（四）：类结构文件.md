@@ -48,7 +48,7 @@ Class文件是以8个字节为单位的二进制流，紧凑排列，中间没�
 
 常量池之后紧跟的就是访问标志。主要包括了这个Class是类or接口，是不是public,是不是abstract类型，是不是final类型。
 
-### 5、类索引、父类索引于接口类集合
+### 5、类索引、父类索引和接口类集合
 
 + java.lang.Object类索引为0；
 + 类的索引其实就是描述了这个Class的extends和implements的关系；
