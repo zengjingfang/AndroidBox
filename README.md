@@ -5,6 +5,7 @@ Java、Android开发知识、经验、资料等总结，作为个人的Android�
 + Name: 井方哥
 + Email: zengjingfang@foxmail.com
 + 知乎：[井方哥](https://www.zhihu.com/people/zeng-jing-fang)
++ 公众号：open_dev
 
 # Android开发实战经验总结
 + [Android性能优化学习与实践总结](https://github.com/zengjingfang/AndroidBox/blob/master/Android/Performance/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%AE%9E%E8%B7%B5%E5%B0%8F%E7%BB%93.md)
