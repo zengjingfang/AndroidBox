@@ -1,6 +1,9 @@
 # 一、概述
 我们在进行Java开发的时候，很少关心Java的内存分配等等，因为这些活都让JVM给我们做了。不仅自动给我们分配内存，还有自动的回收无需再占用的内存空间，以腾出内存供其他人使用。但是我们经常面临的一个问题就是内存泄漏，JVM无法完成回收工作，导致内存占用暴涨，最后可能让程序奔溃。本章主要了解下内存的分布情况以及溢出异常。
 # 二、运行时数据区域
+
+![](https://docs.google.com/drawings/d/e/2PACX-1vQnMepaYDDNOazH8DfwI7vJPxRgZsg0dm8qL236NE6p-MQwyybh3q9WNBMuuSHcurDSBdtA_Q3teWHf/pub?w=711&h=408)
+
 ## 1、程序计数器
 + **线程私有**
 + 当前线程所执行的字节码的行号指示器
