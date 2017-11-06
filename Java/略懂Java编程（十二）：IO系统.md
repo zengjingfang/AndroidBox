@@ -1,16 +1,15 @@
 # IO流
-
+程序操作有两种基本类型，CPU的操作和IO的操作，其中大部分时间都花在了IO上面，不管事本地磁盘，还是网络连接。流，简单的说是一个连续的字节序列。输入流，是读取这个字节序列。而输出流，则是构建这个序列。
+![](http://upload-images.jianshu.io/upload_images/1752522-adc85fb95f884363.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ### 一、字节流和字符流
 + 字节流
-
+![](https://www.ibm.com/developerworks/cn/java/j-lo-javaio/image002.png)
+![](https://www.ibm.com/developerworks/cn/java/j-lo-javaio/image004.png)
 + 字符流
-
-+ 区别
+![](https://www.ibm.com/developerworks/cn/java/j-lo-javaio/image006.png)
+![](https://www.ibm.com/developerworks/cn/java/j-lo-javaio/image008.png)
 
 ### 二、NIO（jdk1.4之后）
-
-
-
 
 + 目标：快速移动大量数据
 #### 方式一：通道和缓冲器
@@ -45,8 +44,16 @@
 + 安全问题：
 	+ 每次运行后，对象将会处于不同的内存地址
 	+ 如果想保存系统状态，最安全的做法就是将其作为“原子”操作进行序列化
+### 五、性能调优
 
-
++ 尽可能减少IO访问次数
++ 尽可能减少IO传输的大小
++ 尽可能使用缓存，而不是磁盘
++ 网络传输尽可能在传输前转为字节码，因为字符到字节码的编码很耗时
++ 
+### 五、参考资料
++ [Java深度历险（八）——Java I/O](http://www.infoq.com/cn/articles/cf-java-i-o/)
++ [深入分析 Java I/O 的工作机制](https://www.ibm.com/developerworks/cn/java/j-lo-javaio/index.html)
 
 
 
