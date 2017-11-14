@@ -29,6 +29,5 @@
 
 # 二、前后不一致
 先说个列子，伪代码如下：
-
-1、for循环里面的return 和 continue
 2、request 和 response
+3、数据库 数据实体的转换
