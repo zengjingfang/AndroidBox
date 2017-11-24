@@ -52,9 +52,27 @@
 像这类的问题还有？
 
 + SQLite的字段设置为了unique的，但是insert的时候有重复。这个异常内部捕获了，返回了-1。这里尤其是"_id";
-+ 
 
-# 三、线程问题
+
+# 三、判断条件出现漏洞
+
+先上伪代码：
+
+    private void onSuccess(){
+		if (a>=10){
+			//do somthing when a>=10
+    	}
+	}
+	
+    private void onFailed(){
+		if (a>10){
+			//do somthing when a>=10
+    	}
+	}
+
+上述我们可以看到，本来的意思是当a>=10时，在成功或者失败的回调要处理不一样的逻辑。但是我们在进行if判断时候写错了。这里举例的比较简单，尤其是当我们有复杂条件的判断时，需要注意判断条件是否符合预期。
+
+# 四、线程问题
 
 ### 1、多个线程操作一个对象的问题
 先举个例子，依然是伪代码：
@@ -97,5 +115,68 @@
 	}
     
 发现这个问题的现象是程序刚启动时随机出现几次ANR,随后发现外部在主线程调用了getInfo()方法，但是调用该方法之前，serveice还没有绑定成功。根据getInfo方法里面的逻辑，他在此处wait，随后将主线程阻塞。而此时绑定Service的回调onServiceConnected（）也是在主线程回调的。前面已经将主线程阻塞了，那么这里永远也无法回调回来。回调不回来，那getInfo()里面就一直wait。最终导致了ANR,这种问题在非主线程也要注意。
+
+### 3、多个线程的顺序问题
+举个列子，伪代码如下：
+
+	
+    private void onAccountLoginSuccess(){
+		mHandler.post(new Runnable() {
+             @Override
+             public void run() {
+                updateOnSuccess()
+             }
+        });
+		Account newAccount = getAccount();
+	}
+
+	//Thread-1
+	private synchronize void updateOnSuccess(){
+		mAccount.setLoginSuccess(true)
+		
+	}
+	//Thread-2
+	private synchronize Account getAccount(){
+		return mAccount;
+	}
+
+这里和1可能有些重复，但我还是想单独区分开来。因为平时我们可能用同步锁处理了线程安全问题，但是因为我们无法保证updateOnSuccess（）和getAccount（）方法哪个先调用哪个后调用。
+
+#  五、数据持久化以及缓存处理问题
+举个例子，上伪代码：
+
+	private int getAccountID(){
+		if(mAccount!=0){
+			return mAccountID;//内存中的缓存
+		}
+		return AccountDao.getAccountID();//从数据库读取
+	}
+
+	private void onLoginFailed(){
+		//假设登录失败需要清除ID重新注册
+		AccountDao.deleteAccountID()；
+		toLoginActivity();
+	}
+
+	private void loginAccount(){
+		int accountID;
+		if(getAccountID()!=0){
+			//有id,则自动登录
+			login（accountID）;
+		}else{
+			//手动登录
+		}
+	}
+
+类似于上述的一个逻辑，本来发现登录返回失败，原因是accountID不对，这个时候我们可能会删除accountID，然后重新输入账号密码登录。但是，我们在清除accountID时只清除了数据库，没有清除缓存，再次登录的时候用的缓存的值。这样就会导致程序陷入了死循环。所以在进行存储操作时，需要考虑好同步的问题。
+
+
+# 改善建议
+
++ 遵循Java编程的设计原则
++ 尽量将复杂的问题简单化
++ 做好关注点分离，分成业务模块，减少耦合，内部的事情内部处理，对外提供接口
++ 借用成熟开源框架的设计思想
++ 写单元测试
 
 
