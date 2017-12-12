@@ -1,9 +1,13 @@
+
+
+
 # 启动
 
 ### [1.1]ContextImpl.startService
     @Override
     public ComponentName startService(Intent service) {
         warnIfCallingFromSystemProcess();
+	    //调用[1.1]
         return startServiceCommon(service, mUser);
     }
 
@@ -12,6 +16,7 @@
         try {
             validateServiceIntent(service);
             service.prepareToLeaveProcess(this);
+			//AMS 调用 [2.1]
             ComponentName cn = ActivityManagerNative.getDefault().startService(
                 mMainThread.getApplicationThread(), service, service.resolveTypeIfNeeded(
                             getContentResolver()), getOpPackageName(), user.getIdentifier());
@@ -56,6 +61,7 @@
             final int callingPid = Binder.getCallingPid();
             final int callingUid = Binder.getCallingUid();
             final long origId = Binder.clearCallingIdentity();
+            // 调用[3.1]
             ComponentName res = mServices.startServiceLocked(caller, service,
                     resolvedType, callingPid, callingUid, callingPackage, userId);
             Binder.restoreCallingIdentity(origId);
@@ -85,7 +91,7 @@
             callerFg = true;
         }
 
-		// 调用[3.2]
+		// 调用[3.2]  去查找这个service（Intent）的记录
         ServiceLookupResult res =
             retrieveServiceLocked(service, resolvedType, callingPackage,
                     callingPid, callingUid, userId, true, callerFg, false);
@@ -148,6 +154,7 @@
 
         final ServiceMap smap = getServiceMap(r.userId);
         boolean addToStarting = false;
+		// 对于非前台服务，有特殊的调度
         if (!callerFg && r.app == null
                 && mAm.mUserController.hasStartedUserState(r.userId)) {
             ProcessRecord proc = mAm.getProcessRecordLocked(r.processName, r.appInfo.uid, false);
@@ -171,6 +178,7 @@
                     return r.name;
                 }
                 if (smap.mStartingBackground.size() >= mMaxStartingBackground) {
+					// 超出最大启动数，则将该服务加入到延迟队列
                     // Something else is starting, delay!
                     Slog.i(TAG_SERVICE, "Delaying start of: " + r);
                     smap.mDelayedStartList.add(r);
@@ -729,7 +737,7 @@
             }
         }
     }
-### [4.1]ActiveThread.ApplicationThread.scheduleCreateService
+### [4.1]ActivityThread.ApplicationThread.scheduleCreateService
 
         public final void scheduleCreateService(IBinder token,
                 ServiceInfo info, CompatibilityInfo compatInfo, int processState) {
@@ -742,7 +750,7 @@
             sendMessage(H.CREATE_SERVICE, s);
         }
 
-### [4.2]ActiveThread.handleCreateService
+### [4.2]ActivityThread.handleCreateService
 
 	private void handleCreateService(CreateServiceData data) {
         // If we are getting ready to gc after going to the background, well
@@ -908,6 +916,7 @@
             throw new IllegalArgumentException("connection is null");
         }
         if (mPackageInfo != null) {
+           // 调用 
             sd = mPackageInfo.getServiceDispatcher(conn, getOuterContext(), handler, flags);
         } else {
             throw new RuntimeException("Not supported in system context");
@@ -935,6 +944,104 @@
             throw e.rethrowFromSystemServer();
         }
     }
+
+### LoadedApk
+
+	        ServiceDispatcher(ServiceConnection conn,
+                Context context, Handler activityThread, int flags) {
+            mIServiceConnection = new InnerConnection(this);
+            mConnection = conn;
+            mContext = context;
+            mActivityThread = activityThread;
+			// 
+            mLocation = new ServiceConnectionLeaked(null);
+            mLocation.fillInStackTrace();
+            mFlags = flags;
+        }
+
+### LoadedApk
+
+	private static class InnerConnection extends IServiceConnection.Stub {
+            final WeakReference<LoadedApk.ServiceDispatcher> mDispatcher;
+
+            InnerConnection(LoadedApk.ServiceDispatcher sd) {
+                mDispatcher = new WeakReference<LoadedApk.ServiceDispatcher>(sd);
+            }
+
+            public void connected(ComponentName name, IBinder service) throws RemoteException {
+                LoadedApk.ServiceDispatcher sd = mDispatcher.get();
+                if (sd != null) {
+					// 
+                    sd.connected(name, service);
+                }
+            }
+        }
+
+### LoadedApk
+
+	   public void connected(ComponentName name, IBinder service) {
+            if (mActivityThread != null) {
+                mActivityThread.post(new RunConnection(name, service, 0));
+            } else {
+                doConnected(name, service);
+            }
+        }
+
+### LoadedApk
+
+	public void doConnected(ComponentName name, IBinder service) {
+            ServiceDispatcher.ConnectionInfo old;
+            ServiceDispatcher.ConnectionInfo info;
+
+            synchronized (this) {
+                if (mForgotten) {
+                    // We unbound before receiving the connection; ignore
+                    // any connection received.
+                    return;
+                }
+                old = mActiveConnections.get(name);
+                if (old != null && old.binder == service) {
+                    // Huh, already have this one.  Oh well!
+					// 啥，已经有了，那就不回调了！！！
+                    return;
+                }
+
+                if (service != null) {
+                    // A new service is being connected... set it all up.
+                    info = new ConnectionInfo();
+                    info.binder = service;
+                    info.deathMonitor = new DeathMonitor(name, service);
+                    try {
+                        service.linkToDeath(info.deathMonitor, 0);
+                        mActiveConnections.put(name, info);
+                    } catch (RemoteException e) {
+                        // This service was dead before we got it...  just
+                        // don't do anything with it.
+                        mActiveConnections.remove(name);
+                        return;
+                    }
+
+                } else {
+                    // The named service is being disconnected... clean up.
+                    mActiveConnections.remove(name);
+                }
+
+                if (old != null) {
+                    old.binder.unlinkToDeath(old.deathMonitor, 0);
+                }
+            }
+
+            // If there was an old service, it is now disconnected.
+            if (old != null) {
+				// 居然还有旧的，而且还不是我，休了她
+                mConnection.onServiceDisconnected(name);
+            }
+            // If there is a new service, it is now connected.
+            if (service != null) {
+				// 有新的service，则回调
+                mConnection.onServiceConnected(name, service);
+            }
+        }
 
 ###  ActivityManagerService.bindService
 
