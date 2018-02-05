@@ -23,7 +23,7 @@
 		return account;
     }
 
-这个问题的现象是应用启动的时候报了TransactionTooLargeException，然而很明显根据exception的栈来看，我启动时调用了aidlGetAccount这个接口，但是这个接口真的只是return一个account对象，不会出现数据过大的情况。追了下源码有个200k的限制，也不存在问题。最后查了博客发现Android的Binder机制限制单应用的总大小为1M，后面发现启动core进程时候循环调用了系统的getApplicationInfo，这个接口包含的数据量很大。当设备上的APP比较多的时候，存在超出的风险。
+这个问题的现象是应用启动的时候报了TransactionTooLargeException，然而很明显根据exception的栈来看，我启动时调用了aidlGetAccount这个接口，但是这个接口真的只是return一个account对象，不会出现数据过大的情况。追了下源码有个200k的限制，也不存在问题。最后查了博客发现Android的Binder机制限制单应用的总大小为1M，后面发现启动core进程时候循环调用了系统的getApplicationInfo，这样就导致了通过binder传输的数据量大。当设备上的APP比较多的时候，存在超出的风险。
 
 
 # 三、厂商定制引发的问题
@@ -36,7 +36,9 @@
 
 发现在某手机上调用接口奔溃，最后发现奔溃的手机API Level 是27，Android版本4.2.2。ROM编译版本写错了，也是坑到家了。
 
-# 四、Android生命周期不对的问题
+# 四、某些系统广播发出频繁或者异常
+
+
 
 
 # 参考资料
