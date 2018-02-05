@@ -1,4 +1,6 @@
 
+![](http://ww1.sinaimg.cn/large/aea705afgy1fo5ytsguhej21tr1bm77s.jpg)
+
 ### [1.1]Context.registerReceiver
 
     public abstract Intent registerReceiver(BroadcastReceiver receiver,

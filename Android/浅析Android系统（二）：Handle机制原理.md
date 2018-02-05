@@ -82,5 +82,5 @@
 上述可知，我们可以在一个Thread里边new出多个Hanlder,这个Hanlder会找到当前的Thead公共的唯一的Looper以及这个Looper的唯一的MessageQueue,我们通过Hanlder将一些Message压入到MessageQueue里边。这个Looper会从Queue里边一个个取出Message，然后交给Hanlder来处理。
 
 # 总结
-
+![](http://ww1.sinaimg.cn/large/aea705afgy1fo5xnbv0doj215s0nomyz.jpg)
 我们可以将一个App看做一个应用程序，启动程序默认会启动一个进程，这个进程启动时就会zygoteInit启动一个主线程和两个binder线程以及我们自己new的一些子线程。其中这个主线程就是ActivityThread(Service也是寄存在ActivityThread之中的)。然后通过上述的Handler、Looper、MessageQueue，让程序活了起来。

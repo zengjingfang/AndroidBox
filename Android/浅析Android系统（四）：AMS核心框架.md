@@ -4,13 +4,13 @@
 # 一、开机init系统环境
 Android系统底层基于Linux Kernel, 当Kernel启动过程会创建init进程, 该进程是uoyou用户空间的鼻祖, init进程会启动servicemanager(binder服务管家), Zygote进程(Java进程的鼻祖). Zygote进程会创建 system_ server进程以及各种app进程.【摘自：Gityuan.com】
 故，Zygote进程是所有进程的父进程，包括system_server进程。至于SM本篇就不再说明了。
+![](http://ww1.sinaimg.cn/large/aea705afgy1fo5xi04h8yj20u00i2aau.jpg)
 
-![](android-booting.jpg)
 
 由上图，我们可了解到当我们开启启动系统的时候，一切从系统底层的init开始，构建出了zygote进程、SM进程。zygote负责fork新的进程，如system_server,launcher以及我们平时开发的各种所谓的app。而SM是构建并管理了FrameWorke层的各种Service,其中最重要的就是我们本篇要说的ActivityServiceManger，同时还负责了不同进程之前相互Binder通信。明白了这两个角色间的如何分工与合作就非常重要。
 
 # 二、AMS核心框架图
-
+![](http://ww1.sinaimg.cn/large/aea705afgy1fo5xgfla5dj20nb0dujrv.jpg)
 由上述，我们假设机器已经启动，并且Zygote和SM都准备好了，System_server进程也由Zygote构建好了。通常，我们首先要看到的就是桌面Lancher，这个Lancher实际就是一个新的App进程。对照下图，大概解释下Lancher进程进来时要做什么。并且理解下这个框架图。
 
 + 1、App的进程通过Zygote进程fork起来，一切从ActivityThread.main（）方法开始。
@@ -34,7 +34,7 @@ Android系统底层基于Linux Kernel, 当Kernel启动过程会创建init进程,
 + 6、接着调用ActivityThread.performLancherActivity(),构建出Activity实例，mInstrumentation回调Activity的onCreate方法。
 + 7、添加该activity到ArrayMap<IBinder,ActivityClientRecord>到mActivities队列里面。
 
-![](/pic/android_ams.png)
+![](http://ww1.sinaimg.cn/large/aea705afgy1fo5xeu0l29j21311eegp7.jpg)
 
 
 # 三、AMS核心代码解析
@@ -137,15 +137,6 @@ Android系统底层基于Linux Kernel, 当Kernel启动过程会创建init进程,
 # 小结
 
 本文主要梳理了AMS、AMN、AMP，APT、APN、ATP,以及ActvityThread、mH、Instrumention、Application，这几个角色的职责，以及每个角色之间的关系，从而梳理出了AMS的核心框架图。其中有非常重要的两个Binder接口类，首先是IActivityManager,他的Client端在普通的App这边，server端在system_ server这边，这样就实现了App->System_ Server的通信，同样的IApplicationThread刚好反了过来，实现了system _server->App 之间的通信。如此，便实现了System _server和App之间的相互通信。而ApplicationThread到ActivityThread中间用了mH这个Handle保证了消息的有序进行，并且ActvitityThread找了mInstrumention这个管家婆帮忙管事，减少了自己的代码负担。理解了整个框架如何进行通信的，那么如何进行四大组件生命周期的管理就是在这条AMS通信框架下的具体应用实现了。
-
-
-
-
-
-
-
-
-
 
 
 ## LancherMode
