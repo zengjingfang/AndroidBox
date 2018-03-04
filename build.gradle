@@ -6,9 +6,10 @@ buildscript {
     repositories {
         jcenter()
         maven { url "http://172.28.1.147:8081/nexus/content/repositories/thirdparty/"}
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0-alpha1'
+        classpath 'com.android.tools.build:gradle:3.0.0'
     }
 }
 
@@ -18,5 +19,6 @@ allprojects {
         maven {url bfcBuildConfig.MAVEN_URL}
         maven {url 'http://172.28.1.147:8081/nexus/content/repositories/thirdparty/'}
         maven { url 'http://172.28.1.147:8081/nexus/content/repositories/thirdparty-snapshot/' }
+        google()
     }
 }
