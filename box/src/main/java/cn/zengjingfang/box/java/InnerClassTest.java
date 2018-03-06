@@ -31,7 +31,7 @@ public class InnerClassTest {
         }*/
 
     }
-    static class B {
+    public static class B {
         private A a;
         private InnerClassTest innerClassTest;
 
