@@ -4,7 +4,7 @@ import android.os.Build;
 
 import cn.zengjingfang.box.android.rxhandler.rx.Observable;
 import cn.zengjingfang.box.android.rxhandler.rx.Scheduler;
-import cn.zengjingfang.box.android.rxhandler.rx.Schedulers.Schedulers;
+import cn.zengjingfang.box.android.rxhandler.rx.schedulers.Schedulers;
 import cn.zengjingfang.box.android.rxhandler.rx.Subscriber;
 
 

@@ -1,4 +1,4 @@
-package cn.zengjingfang.box.android.rxhandler.rx.Schedulers;
+package cn.zengjingfang.box.android.rxhandler.rx.schedulers;
 
 /**
  *
