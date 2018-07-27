@@ -69,8 +69,15 @@
 	}
 
 
-#### 三、分析结论
+#### 三、问题分析
 
+出现该问题原因是在startService(intent)中的intent，使用了putExtra传输数据，但是所传的key偏长，或者说数据过大，导致系统底层出现了异常，抛出了NullPointerException，最终导致RuntimeException，所以真正的解决办法是在bindservice动作的intent里面不通过putExtra传输参数，如下注释后面两行代码。经过版本验证修改了没有出现该异常。
 
-根据上述的源码追踪分析，极有可能是在bindservice的时候进程意外死亡或者进行binder通信时内存被回收等情况，导致了这个parcel为null，抛出了异常。处理就是在APP业务代码中bindservice操作时进行一次“try catch”,保证程序不崩溃。如果出现该情况，也就意味着bindService失败，是否要进一步处理根据环境而定。
-
+	    intent.setPackage(context.getPackageName());
+        intent.setComponent(new ComponentName(hostPkg, PushService.class.getName()));
+        intent.setAction(PushService.ACTION);
+        intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+		// 去掉，验证bindService出现的异常
+        //intent.putExtra(EXTRA_PLATFORM, platform);
+        //intent.putExtra(EXTRA_HOST_PKG_NAME, hostPkg);
+        
