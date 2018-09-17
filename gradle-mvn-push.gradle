@@ -1,0 +1,47 @@
+apply plugin: 'maven'
+apply from :"sdk-manager.gradle"
+
+// maven deployer
+// release版本上传地址
+def RELEASE_POM_URL = mavenUpload.releaseUrl
+
+def USER_NAME = mavenUpload.userName
+def PASSWORD = mavenUpload.password
+
+def GROUP_ID = mavenPublish.groupId
+def POM_ARTIFACT_ID = mavenPublish.artifactId
+def VERSION_NAME = mavenPublish.versionName
+
+/*def isReleaseBuild() {
+    return VERSION_NAME.contains("SNAPSHOT") == false
+}*/
+
+def uploadUrl = /*VERSION_NAME.contains("SNAPSHOT") ? RELEASE_POM_URL :*/ RELEASE_POM_URL
+
+
+println("USER_NAME = " + USER_NAME)
+println("PASSWORD = " + PASSWORD)
+println("uploadUrl = " + uploadUrl)
+println("implementation= " + GROUP_ID + ":" + POM_ARTIFACT_ID + ":" + VERSION_NAME)
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uploadUrl) {
+                authentication(userName: USER_NAME, password: PASSWORD)
+                pom.groupId = GROUP_ID
+                pom.artifactId = POM_ARTIFACT_ID
+                pom.version = VERSION_NAME
+            }
+
+            pom.whenConfigured { pom ->
+                pom.dependencies.forEach { dep ->
+                    if (dep.getVersion() == "unspecified") {
+                        dep.setGroupId(project.GROUP_ID)
+                        dep.setVersion(project.VERSION_NAME)
+                    }
+                }
+            }
+        }
+    }
+}
