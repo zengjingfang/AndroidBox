@@ -1,0 +1,25 @@
+ext{
+    // Android 编译
+    androidconfigs = [
+            compileSdkVersion: 28,
+            buildToolsVersion: '27.0.3',
+            minSdkVersion    : 15,
+            targetSdkVersion : 28
+    ]
+    // Android lib
+    androidLibDependencies =[
+            support  : "com.android.support:appcompat-v7:28.0.0-rc02",
+
+    ]
+
+
+
+    // 外部第三方SDK lib 版本
+    thirdLibDependencies =[
+            gson :" com.google.code.gson:gson:1.0.0"
+    ]
+
+
+
+
+}
